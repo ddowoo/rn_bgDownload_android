@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <!--  API 34 이상 지원시 포그라운드 서비스 유형까지 선언해 주어야함 -->
 
     <application
       android:name=".MainApplication"
@@ -9,6 +12,9 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+      <service
+        android:name=".BgDownloadService">
+      </service>
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
@@ -16,10 +22,10 @@
         android:launchMode="singleTask"
         android:windowSoftInputMode="adjustResize"
         android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+          <intent-filter>
+                  <action android:name="android.intent.action.MAIN" />
+                  <category android:name="android.intent.category.LAUNCHER" />
+          </intent-filter>
       </activity>
     </application>
 </manifest>
